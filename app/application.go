@@ -10,5 +10,5 @@ var(
 
 func StarApplication(){
 	mapUrls()
-	router.Run(":8080")
+	router.Run(":8082")
 }
