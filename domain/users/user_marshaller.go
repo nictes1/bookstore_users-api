@@ -6,7 +6,6 @@ type PublicUser struct {
 	Id         int64  `json:"id"`
 	DateCreate string `json:"date_create"`
 	Status     string `json:"status"`
-
 }
 
 type PrivateUser struct {
@@ -20,20 +19,19 @@ type PrivateUser struct {
 
 func (users Users) Marshall(isPublic bool) []interface{} {
 	result := make([]interface{}, len(users))
-	for inx, user := range users{
+	for inx, user := range users {
 		result[inx] = user.Marshall(isPublic)
 
 	}
 	return result
 }
 
-
-func (user *User) Marshall(isPublic bool) interface{}{
+func (user *User) Marshall(isPublic bool) interface{} {
 	if isPublic {
 		return PublicUser{
-			Id: user.Id,
+			Id:         user.Id,
 			DateCreate: user.DateCreate,
-			Status:  user.Status,
+			Status:     user.Status,
 		}
 	}
 	userJson, _ := json.Marshal(user)
@@ -41,4 +39,3 @@ func (user *User) Marshall(isPublic bool) interface{}{
 	json.Unmarshal(userJson, &privateUser)
 	return privateUser
 }
-

@@ -1,8 +1,9 @@
 package users
 
 import (
-	"github.com/nictes1/Microservices-Go/bookstore_users-api/utils/errors"
 	"strings"
+
+	"github.com/nictes1/bookstore_users-api/utils/errors"
 )
 
 const (
@@ -30,7 +31,7 @@ func (user *User) Validate() *errors.RestErr {
 		return errors.NewBadRequestError("invalid email address")
 	}
 	user.Password = strings.TrimSpace(user.Password)
-	if user.Password == ""{
+	if user.Password == "" {
 		return errors.NewBadRequestError("invalid password")
 	}
 	return nil
